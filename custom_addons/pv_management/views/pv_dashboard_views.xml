@@ -1,0 +1,143 @@
+<odoo>
+    <!-- Form View for Dashboard -->
+    <record id="view_pv_dashboard_form" model="ir.ui.view">
+        <field name="name">pv.dashboard.form</field>
+        <field name="model">pv.dashboard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" readonly="1"/></h1>
+                    </div>
+
+                    <!-- Installation Statistics Cards -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3>Installations</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="o_stat_info bg-success text-white p-3 rounded">
+                                <span class="o_stat_text">Total Installations</span>
+                                <span class="o_stat_value"><field name="total_installations"/></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="o_stat_info bg-info text-white p-3 rounded">
+                                <span class="o_stat_text">Active</span>
+                                <span class="o_stat_value"><field name="active_installations"/></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="o_stat_info bg-primary text-white p-3 rounded">
+                                <span class="o_stat_text">In Production</span>
+                                <span class="o_stat_value"><field name="production_installations"/></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="o_stat_info bg-warning text-white p-3 rounded">
+                                <span class="o_stat_text">Stopped</span>
+                                <span class="o_stat_value"><field name="stopped_installations"/></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Maintenance Statistics Cards -->
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <h3>Maintenance</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="o_stat_info bg-danger text-white p-3 rounded">
+                                <span class="o_stat_text">Open Reclamations</span>
+                                <span class="o_stat_value"><field name="open_reclamations"/></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="o_stat_info bg-warning text-white p-3 rounded">
+                                <span class="o_stat_text">Pending Interventions</span>
+                                <span class="o_stat_value"><field name="pending_interventions"/></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="o_stat_info bg-info text-white p-3 rounded">
+                                <span class="o_stat_text">Recent Alarms (30d)</span>
+                                <span class="o_stat_value"><field name="recent_alarms"/></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graphs Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <h3>Analytics</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <field name="installation_states_chart" widget="dashboard_graph"/>
+                        </div>
+                        <div class="col-md-6">
+                            <field name="monthly_interventions_chart" widget="dashboard_graph"/>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions Section -->
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <h3>Quick Actions</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button name="action_new_installation" type="object" class="btn btn-primary btn-block">
+                                New Installation
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button name="action_new_reclamation" type="object" class="btn btn-danger btn-block">
+                                New Reclamation
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button name="action_new_intervention" type="object" class="btn btn-warning btn-block">
+                                New Intervention
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button name="action_view_alarms" type="object" class="btn btn-info btn-block">
+                                View Alarms
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activities -->
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <h3>Recent Activities</h3>
+                            <field name="recent_activity_ids" widget="activity"/>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_pv_dashboard" model="ir.actions.act_window">
+        <field name="name">PV Dashboard</field>
+        <field name="res_model">pv.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_pv_dashboard"
+              name="Dashboard"
+              parent="menu_pv_root"
+              action="action_pv_dashboard"
+              sequence="1"/>
+</odoo>

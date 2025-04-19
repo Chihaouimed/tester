@@ -1,0 +1,41 @@
+<odoo>
+    <record id="view_pv_module_form" model="ir.ui.view">
+        <field name="name">pv.module.form</field>
+        <field name="model">pv.module</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="reference"/>
+                        <field name="brand"/>
+                        <field name="power"/>
+                        <field name="number_of_modules"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pv_module_tree" model="ir.ui.view">
+        <field name="name">pv.module.tree</field>
+        <field name="model">pv.module</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference"/>
+                <field name="brand"/>
+                <field name="power"/>
+                <field name="number_of_modules"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_pv_module" model="ir.actions.act_window">
+        <field name="name">PV Modules</field>
+        <field name="res_model">pv.module</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_pv_module" name="Modules" parent="menu_pv_root" action="action_pv_module"/>
+</odoo>

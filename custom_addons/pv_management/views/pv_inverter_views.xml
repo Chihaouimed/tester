@@ -1,0 +1,42 @@
+<odoo>
+    <record id="view_pv_inverter_form" model="ir.ui.view">
+        <field name="name">pv.inverter.form</field>
+        <field name="model">pv.inverter</field>
+        <field name="arch" type="xml">
+            <form>
+                 <sheet>
+                    <group>
+                        <field name="reference_onduleur_pv_id"/>
+                        <field name="marque_onduleur_pv_id"/>
+                        <field name="puissance_onduleur_pv"/>
+                        <field name="calibre_disjoncteur_onduleur_pv"/>
+                        <field name="nombre_onduleur_pv"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pv_inverter_tree" model="ir.ui.view">
+        <field name="name">pv.inverter.tree</field>
+        <field name="model">pv.inverter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="reference_onduleur_pv_id"/>
+                <field name="marque_onduleur_pv_id"/>
+                <field name="puissance_onduleur_pv"/>
+                <field name="calibre_disjoncteur_onduleur_pv"/>
+                <field name="nombre_onduleur_pv"/>
+                <field name="puissance_totale_ag"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_pv_inverter" model="ir.actions.act_window">
+        <field name="name">PV Inverters</field>
+        <field name="res_model">pv.inverter</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_pv_inverter" name="Onduleurs" parent="menu_pv_root" action="action_pv_inverter"/>
+</odoo>
